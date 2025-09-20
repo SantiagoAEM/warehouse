@@ -12,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+         $products = Product::paginate(15); 
+        return  inertia('products/index', compact('products'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return "crear products";
     }
 
     /**
