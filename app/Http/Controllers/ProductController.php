@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return "crear products";
+        return inertia('products/create');
     }
 
     /**
@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "todobien";
     }
 
     /**

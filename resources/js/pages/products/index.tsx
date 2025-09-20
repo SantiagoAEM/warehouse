@@ -43,7 +43,7 @@ interface PageProps {
     per_page: number;
   };
    [key: string]: unknown; 
-}
+} 
 
 export default function Index() {
     const { products } = usePage<PageProps>().props;
@@ -52,7 +52,7 @@ export default function Index() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Products List" />
             <div className="flex m-4 justify-end">
-                <Link href="route('products.create')"><Button  size="sm" type="button">
+                <Link href="/products/create"><Button  size="sm" type="button">
                     <PlusIcon />
                     Add Product
                 </Button></Link>
