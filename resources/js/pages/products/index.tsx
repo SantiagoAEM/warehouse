@@ -13,7 +13,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from '@/components/ui/button';
-import {  PlusIcon } from 'lucide-react';
+import {  PlusIcon,FilePenLine, Trash } from 'lucide-react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -64,7 +64,8 @@ export default function Index() {
                     <TableHead className="w-[100px]">Name</TableHead>
                     <TableHead>Description</TableHead>
                     <TableHead>Stock</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead>Price</TableHead>
+                    <TableHead className="text-left">-</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -74,6 +75,17 @@ export default function Index() {
                     <TableCell>{product.description}</TableCell>
                     <TableCell>{product.stock}</TableCell>
                     <TableCell>{product.price}</TableCell>
+                    <TableCell >
+                        <Link href={`/products/${product.id}/edit`} title='Edit' >
+                        <Button  size="sm" type="button" >
+                            <FilePenLine />                            
+                        </Button></Link>
+                            <Link href={`/products/${product.id}/delete`} className="m-1" title='Delete'>
+                            <Button  size="sm" type="button" >
+                            <Trash />
+                            
+                        </Button></Link>
+                    </TableCell>
                     </TableRow>
                      ))}
                 </TableBody>
