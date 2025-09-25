@@ -56,8 +56,7 @@ export default function EditProduct({product}:{product:Product}) {
             <form className="max-w-md mx-auto m-4" method='post' onSubmit={handleUpdate}>
             <div className="relative z-0 w-full mb-5 group">
                 <Input name="floating_name" id="floating_name" className="focus-visible:ring-0 focus:ring-0 focus:outline-none block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 rounded-none border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " 
-                    placeholder=" " 
-                    
+                    placeholder=" "                     
                     value={data.name}
                     onChange={e => setData('name', e.target.value)}
                 />
@@ -68,8 +67,7 @@ export default function EditProduct({product}:{product:Product}) {
             </div>
             <div className="relative z-0 w-full mb-5 group">
                 <Textarea id="description"  name="description"  className="dark:bg-transparent focus-visible:ring-0 focus:ring-0 focus:outline-none block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 rounded-none border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " 
-                    placeholder=" " 
-                    required 
+                    placeholder=" "                    
                     value={data.description}
                     onChange={e => setData('description', e.target.value)}
                 />
@@ -81,8 +79,7 @@ export default function EditProduct({product}:{product:Product}) {
             <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-5 group">
                     <Input name="floating_stock" id="floating_stock" className="focus-visible:ring-0 focus:ring-0 focus:outline-none block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 rounded-none border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " 
-                        placeholder=" " 
-                        required
+                        placeholder=" "                        
                         value={data.stock}
                         onChange={e => setData('stock', Number (e.target.value))}
                     />
@@ -93,8 +90,7 @@ export default function EditProduct({product}:{product:Product}) {
                 </div>
                 <div className="relative z-0 w-full mb-5 group">
                     <Input name="floating_price" id="floating_price" className="focus-visible:ring-0 focus:ring-0 focus:outline-none block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 rounded-none border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer " 
-                        placeholder=" " 
-                        required
+                        placeholder=" "                        
                         value={data.price}
                         onChange={e => setData('price', Number(e.target.value))}
                     />

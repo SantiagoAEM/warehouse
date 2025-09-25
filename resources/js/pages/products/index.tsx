@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/app-layout';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage, Link } from '@inertiajs/react';
+import { Head, usePage, Link, router } from '@inertiajs/react';
 import {
   Table,
   TableBody,
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from '@/components/ui/button';
 import {  PlusIcon,FilePenLine, Trash } from 'lucide-react';
+import Swal from 'sweetalert2';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -37,13 +38,37 @@ interface Product{
 interface PageProps {
   products: {
     data: Product[];
-    // puedes añadir más campos si quieres usar paginación:
+    // añadir más campos si quieres usar paginación:
     current_page: number;
     last_page: number;
     per_page: number;
   };
    [key: string]: unknown; 
-} 
+}
+
+const handleDelete = (id: number) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      router.delete(`/products/${id}`, {
+        onSuccess: () => {
+          Swal.fire('Deleted!', 'Product has been deleted.', 'success');
+        },
+        onError: () => {
+          Swal.fire('Error!', 'There was a problem deleting the product.', 'error');
+        },
+      });
+    }
+  });
+};
+
 
 export default function Index() {
     const { products } = usePage<PageProps>().props;
@@ -75,21 +100,31 @@ export default function Index() {
                     <TableCell>{product.description}</TableCell>
                     <TableCell>{product.stock}</TableCell>
                     <TableCell>{product.price}</TableCell>
-                    <TableCell >
+                    <TableCell className=' space-x-2'>
                         <Link href={`/products/${product.id}/edit`} title='Edit' >
-                        <Button  size="sm" type="button" >
+                        <Button  
+                            size="sm" 
+                            type="button" 
+                            className="text-green-500"
+                        >
                             <FilePenLine />                            
-                        </Button></Link>
-                            <Link href={`/products/${product.id}/delete`} className="m-1" title='Delete'>
-                            <Button  size="sm" type="button" >
+                        </Button>
+                        </Link>
+                        <Button
+                            size="sm"
+                            type="button"
+                            className="text-red-500"
+                            title="Delete"
+                            onClick={() => handleDelete(product.id)}
+                            >
                             <Trash />
-                            
-                        </Button></Link>
+                        </Button>
                     </TableCell>
                     </TableRow>
                      ))}
                 </TableBody>
             </Table>
+
         </AppLayout>
     );
 }
